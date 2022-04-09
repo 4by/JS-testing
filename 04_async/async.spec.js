@@ -1,10 +1,4 @@
-const axios = require('axios')
 const Ajax = require('./async')
-
-
-//если мы хотим сделать мок только на конкретный метод модуля,
-//например на метод pow модуля Math, то следует испольщовать:
-// jest.spyOn(Math, "pow")
 
 describe('Ajax: echo', () => {
 
