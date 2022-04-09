@@ -1,4 +1,9 @@
-const { map } = require('./mock')
+const axios = require('axios')
+const { map, async } = require('./mock')
+
+//сделали мок на весь модуль экшс, чтобы далее работать с его ф-ми 
+jest.mock('axios')
+
 
 describe('Map function', () => {
     let array
@@ -41,4 +46,26 @@ describe('Map function', () => {
         expect(qq()).toEqual('42')
         expect(qq()).toEqual('42')
     })
+})
+
+
+describe('async: GET', () => {
+    let response
+    let our_todos
+
+    beforeEach(() => {
+        our_todos = [{ id: 1, title: 'Todo 1', completed: false }]
+        response = { data: { our_todos } }
+    })
+
+    test('should return data from backend', () => {
+        //когда мы будем делать запрос на сервер через axios 
+        //(так как ранее на весь модуль axios был наложен мок)
+        //jest отловит это место и сразу вернет response 
+        //в ответ на запрос (который он подавит)
+        axios.get.mockReturnValue(response)
+        return async.get().then(data => expect(data.our_todos).toEqual(our_todos)
+        )
+    })
+
 })

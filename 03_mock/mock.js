@@ -1,7 +1,16 @@
+const axios = require('axios')
+
+
 function map(array, callback) {
     const result = []
     for (let i = 0; i < array.length; i++) result.push(callback(array[i]))
     return result
 }
 
-module.exports = { map }
+class async {
+    static async get() {
+        try { return axios.get('https://jsonplaceholder.typicode.com/todos/1').data }
+        catch (e) { console.log(e) }
+    }
+}
+module.exports = { map, async }

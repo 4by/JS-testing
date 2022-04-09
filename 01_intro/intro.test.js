@@ -3,7 +3,7 @@ const { sum, nativeNull } = require('./intro')
 describe('Sum function:', () => {
     test('should return sum of two values', () => {
         expect(sum(1, 3)).toBe(4) // для примитивов: строки, числа
-        expect(sum(1, 3)).toEqual(4) // для массивов, объектов
+        expect(sum(1, 3)).toEqual(4) // для массивов, объектов (сравнивает по значению)
     })
 
     test('should return value correctly comparing to other', () => {

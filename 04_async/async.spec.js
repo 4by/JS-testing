@@ -1,8 +1,10 @@
 const axios = require('axios')
 const Ajax = require('./async')
 
-//сделали мок на весь модуль экшс, чтобы далее работать с его ф-ми 
-jest.mock('axios')
+
+//если мы хотим сделать мок только на конкретный метод модуля,
+//например на метод pow модуля Math, то следует испольщовать:
+// jest.spyOn(Math, "pow")
 
 describe('Ajax: echo', () => {
 
@@ -27,27 +29,6 @@ describe('Ajax: echo', () => {
     test('should catch error async', async () => {
         try { await Ajax.echo() }
         catch (e) { expect(e.message).toBe('error') }
-    })
-
-})
-
-describe('Ajax: GET', () => {
-    let response
-    let our_todos
-
-    beforeEach(() => {
-        our_todos = [{ id: 1, title: 'Todo 1', completed: false }]
-        response = { data: { our_todos } }
-    })
-
-    test('should return data from backend', () => {
-        //когда мы будем делать запрос на сервер через axios 
-        //(так как ранее на весь модуль axios был наложен мок)
-        //jest отловит это место и сразу вернет response 
-        //в ответ на запрос (который он подавит)
-        axios.get.mockReturnValue(response)
-        return Ajax.get().then(data => expect(data.our_todos).toEqual(our_todos)
-        )
     })
 
 })
