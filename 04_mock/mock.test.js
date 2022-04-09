@@ -19,6 +19,13 @@ describe('Map function', () => {
         map(array, qq)
     })
 
+    afterEach(() => {
+        //поскольку моки накапливают вызовы то те, что заданы 
+        //не динамически перед каждым вызовом - необходимо чистить
+        axios.mockClear();
+        // jest.clearAllMocks()
+    })
+
     test('should call callback', () => {
         expect(qq).toBeCalled()
     })
