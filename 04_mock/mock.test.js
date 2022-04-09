@@ -1,5 +1,6 @@
-const axios = require('axios')
 const { map, async } = require('./mock')
+//импортируем экшс, чтобы могли его замокать
+const axios = require('axios')
 
 //сделали мок на весь модуль экшс, тем самым все его ф-и являются замоканными
 //это позволяет функционал для работы с ними 
@@ -73,7 +74,7 @@ describe('async: GET', () => {
         //jest отловит это место и сразу вернет response 
         //в ответ на запрос (который он подавит)
         axios.get.mockReturnValue(response)
-        return async.get().then(data => expect(data.our_todos).toEqual(our_todos)
+        return async.gets().then(data => expect(data.our_todos).toEqual(our_todos)
         )
     })
 

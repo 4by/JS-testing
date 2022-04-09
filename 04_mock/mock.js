@@ -8,7 +8,7 @@ function map(array, callback) {
 }
 
 class async {
-    static async get() {
+    static async gets() {
         try { return axios.get('https://jsonplaceholder.typicode.com/todos/1').data }
         catch (e) { console.log(e) }
     }

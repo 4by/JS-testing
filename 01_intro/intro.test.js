@@ -11,6 +11,8 @@ describe('Sum function:', () => {
         expect(sum(2, 3)).toBeGreaterThanOrEqual(5)
         expect(sum(2, 3)).toBeLessThan(10)
         expect(sum(2, 3)).toBeLessThanOrEqual(5)
+        expect(sum(2, 3)).toMatchSnapshot()
+
     })
 
     test('should sum 2 float values correctly', () => {
