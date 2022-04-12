@@ -2,7 +2,7 @@ const { sum, nativeNull } = require('./intro')
 
 describe('Sum function:', () => {
     test('should return sum of two values', () => {
-        expect(sum(1, 3)).toBe(4) // для примитивов: строки, числа
+        expect(sum(1, 3)).toBe(4) // для примитивов: строки, числа (сравнивает по ссылке)
         expect(sum(1, 3)).toEqual(4) // для массивов, объектов (сравнивает по значению)
     })
 
@@ -11,7 +11,12 @@ describe('Sum function:', () => {
         expect(sum(2, 3)).toBeGreaterThanOrEqual(5)
         expect(sum(2, 3)).toBeLessThan(10)
         expect(sum(2, 3)).toBeLessThanOrEqual(5)
-        expect(sum(2, 3)).toMatchSnapshot()
+
+        //снапшоты создаются в текущей папке 
+        //если в дальнейшем что-то в ф-и будет изменено
+        //(независимо от прохождения/непрохождения тестов), то 
+        //снапшот будет изменен и запросит подтверждение
+        // expect(sum(2, 3)).toMatchSnapshot()
 
     })
 
