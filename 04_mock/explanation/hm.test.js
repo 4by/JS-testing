@@ -1,7 +1,5 @@
 const a = require('./hm')
-//импортируем экшс, чтобы могли его замокать
 const { three } = require('./hm2')
-
 jest.mock('./hm2')
 
 describe('one', () => {
