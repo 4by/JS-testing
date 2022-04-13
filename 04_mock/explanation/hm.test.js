@@ -6,7 +6,7 @@ const { mockedInOtherModule } = require('./hm2')
 jest.mock('./hm2')
 //при моке отдельных ф-й они не будут триггерится как часть других ф-й (из этого же модуля)
 //так как тогда они "растворяются" в других 
-jest.spyOn(a, 'mockedBySpy');
+jest.spyOn(a, 'mockedInSameModule');
 
 describe('one', () => {
 
@@ -16,10 +16,10 @@ describe('one', () => {
     })
 
     test('shou', () => {
-        a.mockedBySpy.mockReturnValue(OK)
+        a.mockedInSameModule.mockReturnValue(OK)
         mockedInOtherModule.mockReturnValue(OK)
 
-        expect(a.mockedBySpy()).toEqual(OK)
+        expect(a.mockedInSameModule()).toEqual(OK)
         expect(a.callMockedFromSameModule()).toEqual(NOT_OK)
         expect(a.callMockedFromOtherModule()).toEqual(OK)
 

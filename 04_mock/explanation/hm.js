@@ -1,9 +1,9 @@
 const {mockedInOtherModule} = require('./hm2')
 
-const mockedBySpy = () => "old"
+const mockedInSameModule = () => "old"
 
-const callMockedFromSameModule = () => mockedBySpy()
+const callMockedFromSameModule = () => mockedInSameModule()
 const callMockedFromOtherModule = () => mockedInOtherModule()
 
 
-module.exports = { callMockedFromSameModule, callMockedFromOtherModule, mockedBySpy }
+module.exports = { callMockedFromSameModule, callMockedFromOtherModule, mockedInSameModule }
