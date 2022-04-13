@@ -20,8 +20,8 @@ describe('one', () => {
         mockedInModule.mockReturnValue(OK)
 
         expect(a.mockedBySpy()).toEqual(OK)
-        expect(a.sameModule()).toEqual(NOT_OK)
-        expect(a.otherModule()).toEqual(OK)
+        expect(a.callMockedFromSameModule()).toEqual(NOT_OK)
+        expect(a.callMockedFromOtherModule()).toEqual(OK)
 
     })
 })
