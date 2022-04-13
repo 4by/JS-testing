@@ -1,3 +1,3 @@
-const axios = () => "123"
+const two = () => "123"
 
-module.exports = { axios }
+module.exports = { two }

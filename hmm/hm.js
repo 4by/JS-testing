@@ -1,5 +1,5 @@
 const num = require('./hm2')
 
-const async = () => "hi:" + num.axios()
+const one = () => "hi:" + num.two()
 
-module.exports = { async }
+module.exports = { one }
