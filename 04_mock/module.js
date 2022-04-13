@@ -1,4 +1,4 @@
-const {other} = require('./hm2')
+const {other} = require('./otherModule')
 
 const same = () => "old"
 

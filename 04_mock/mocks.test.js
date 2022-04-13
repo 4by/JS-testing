@@ -1,9 +1,9 @@
-const mdl = require('./hm')
-const { other } = require('./hm2')
+const mdl = require('./module')
+const { other } = require('./otherModule')
 
 //при моке всего модуля функции триггерятся даже в случае, если они часть других ф-й
 //но надо задавать ответы для всех ф-й
-jest.mock('./hm2')
+jest.mock('./otherModule')
 //при моке отдельных ф-й они не будут триггерится как часть других ф-й (из этого же модуля)
 //так как тогда они "растворяются" в других 
 jest.spyOn(mdl, 'same');
@@ -26,11 +26,11 @@ describe('from here', () => {
         jest.clearAllMocks()
     })
 
+
     test('example', () => {
         expect(fun()).toEqual(NOT_OK)
         expect(mockedHere()).toEqual(OK)
     })
-
 
     test('features', () => {
         /*
@@ -75,7 +75,6 @@ describe('from modules', () => {
         expect(mdl.sameInside()).toEqual(NOT_OK)
         expect(mdl.otherInside()).toEqual(OK)
     })
-
 
 
 })
