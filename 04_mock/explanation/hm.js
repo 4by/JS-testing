@@ -1,7 +1,9 @@
-const num = require('./hm2')
+const {mockedInModule} = require('./hm2')
 
-const two = () => "456"
-const one = () => "hi:" + num.four() + two()
+const mockedBySpy = () => "old"
+
+const sameModule = () => mockedBySpy()
+const otherModule = () => mockedInModule()
 
 
-module.exports = { one, two }
+module.exports = { sameModule, otherModule, mockedBySpy }
