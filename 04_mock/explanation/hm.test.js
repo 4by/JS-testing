@@ -1,5 +1,5 @@
 const a = require('./hm')
-const { mockedInModule } = require('./hm2')
+const { mockedInOtherModule } = require('./hm2')
 
 //при моке всего модуля функции триггерятся даже в случае, если они часть других ф-й
 //но надо задавать ответы для всех ф-й
@@ -17,7 +17,7 @@ describe('one', () => {
 
     test('shou', () => {
         a.mockedBySpy.mockReturnValue(OK)
-        mockedInModule.mockReturnValue(OK)
+        mockedInOtherModule.mockReturnValue(OK)
 
         expect(a.mockedBySpy()).toEqual(OK)
         expect(a.callMockedFromSameModule()).toEqual(NOT_OK)

@@ -1,3 +1,3 @@
-const mockedInModule = () => "|oldThree"
+const mockedInOtherModule = () => "|oldThree"
 
-module.exports = { mockedInModule }
+module.exports = { mockedInOtherModule }
