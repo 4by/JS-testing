@@ -1,6 +1,6 @@
 const {other} = require('./hm2')
 
-const same = () => "old"
+const same = () => "oldSame"
 
 const sameInside = () => same()
 const otherInside = () => other()

@@ -12,7 +12,7 @@ describe('one', () => {
 
     beforeEach(() => {
         OK = "mock sucess"
-        NOT_OK = "old"
+        NOT_OK = "oldSame"
     })
 
     test('shou', () => {

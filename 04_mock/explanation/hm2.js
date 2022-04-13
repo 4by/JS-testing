@@ -1,3 +1,3 @@
-const other = () => "|oldThree"
+const other = () => "oldOther"
 
 module.exports = { other }
