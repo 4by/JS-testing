@@ -1,12 +1,12 @@
 const a = require('./hm')
-const { mockedInOtherModule } = require('./hm2')
+const { other } = require('./hm2')
 
 //при моке всего модуля функции триггерятся даже в случае, если они часть других ф-й
 //но надо задавать ответы для всех ф-й
 jest.mock('./hm2')
 //при моке отдельных ф-й они не будут триггерится как часть других ф-й (из этого же модуля)
 //так как тогда они "растворяются" в других 
-jest.spyOn(a, 'mockedInSameModule');
+jest.spyOn(a, 'same');
 
 describe('one', () => {
 
@@ -16,12 +16,12 @@ describe('one', () => {
     })
 
     test('shou', () => {
-        a.mockedInSameModule.mockReturnValue(OK)
-        mockedInOtherModule.mockReturnValue(OK)
+        a.same.mockReturnValue(OK)
+        other.mockReturnValue(OK)
 
-        expect(a.mockedInSameModule()).toEqual(OK)
-        expect(a.callMockedFromSameModule()).toEqual(NOT_OK)
-        expect(a.callMockedFromOtherModule()).toEqual(OK)
+        expect(a.same()).toEqual(OK)
+        expect(a.sameInside()).toEqual(NOT_OK)
+        expect(a.otherInside()).toEqual(OK)
 
     })
 })
