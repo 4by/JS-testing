@@ -1,6 +1,6 @@
 const a = require('./hm')
 //импортируем экшс, чтобы могли его замокать
-const { two } = require('./hm2')
+const { three } = require('./hm2')
 
 jest.mock('./hm2')
 
@@ -13,10 +13,10 @@ describe('one', () => {
     })
 
     test('shou', () => {
-        jest.spyOn(a, 'three');
-        a.three.mockReturnValue(resp2)
-        two.mockReturnValue(resp1)
-        console.log(a.three())
+        jest.spyOn(a, 'two');
+        a.two.mockReturnValue(resp2)
+        three.mockReturnValue(resp1)
+        console.log(a.two())
         // return expect(a.one()).toEqual(our_todos)
 
     })

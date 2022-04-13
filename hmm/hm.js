@@ -1,7 +1,7 @@
 const num = require('./hm2')
 
-const three = () => "456"
-const one = () => "hi:" + num.two() + three()
+const two = () => "456"
+const one = () => "hi:" + num.four() + two()
 
 
-module.exports = { one, three }
+module.exports = { one, two }

@@ -1,3 +1,3 @@
-const two = () => "123"
+const three = () => "123"
 
-module.exports = { two }
+module.exports = { three }
