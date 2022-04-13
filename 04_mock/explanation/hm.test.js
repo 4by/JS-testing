@@ -8,25 +8,74 @@ jest.mock('./hm2')
 //так как тогда они "растворяются" в других 
 jest.spyOn(mdl, 'same');
 
-mockedHere = jest.fn(() => "old")
+const OK = "mock sucess"
+const NOT_OK = "old"
 
 
-describe('one', () => {
+
+describe('from here', () => {
+
 
     beforeEach(() => {
-        OK = "mock sucess"
-        NOT_OK = "old"
+        fun = () => "old"
+        mockedHere = jest.fn(fun)
+        mockedHere.mockReturnValue(OK)
     })
 
-    test('shou', () => {
+    afterEach(() => {
+        jest.clearAllMocks()
+    })
+
+    test('example', () => {
+        expect(fun()).toEqual(NOT_OK)
+        expect(mockedHere()).toEqual(OK)
+    })
+
+
+    test('features', () => {
+        /*
+
+        mockedHere.mockClear()
+
+        fun.mockReturnValueOnce(100)
+        
+        expect(fun).toBeCalled()
+
+        expect(fun).toBeCalledTimes(4)
+        expect(fun.mock.calls.length).toBe(4)
+
+        expect(fun.mock.results[0].value).toBe(NOT_OK)
+        expect(fun.mock.results[1].value).toBe(NOT_OK)
+        
+
+        */
+    })
+
+
+})
+
+describe('from modules', () => {
+
+    beforeEach(() => {
         mdl.same.mockReturnValue(OK)
         other.mockReturnValue(OK)
-        mockedHere.mockReturnValue(OK)
+    })
 
+    afterEach(() => {
+        jest.clearAllMocks()
+    })
+
+
+    test('mocked from module', () => {
         expect(mdl.same()).toEqual(OK)
+        expect(other()).toEqual(OK)
+    })
+
+    test('mocked callback from module', () => {
         expect(mdl.sameInside()).toEqual(NOT_OK)
         expect(mdl.otherInside()).toEqual(OK)
-        expect(mockedHere()).toEqual(OK)
-
     })
+
+
+
 })
