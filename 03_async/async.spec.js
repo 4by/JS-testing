@@ -1,27 +1,25 @@
-const Ajax = require('./async')
+const async = require('./async')
 
-describe('Ajax: echo', () => {
+describe('async', () => {
 
     const arg = 'some data'
 
     //обычный способ
     test('should return value with promise', () => {
-        return Ajax.echo(arg)
-            .then(data => expect(data).toBe(arg))
+        async(arg).then(data => expect(data).toBe(arg))
     })
 
     test('should catch error with promise', () => {
-        return Ajax.echo()
-            .catch(err => expect(err).toBeInstanceOf(Error))
+        async().catch(err => expect(err).toBeInstanceOf(Error))
     })
 
     //работа с асинхронным тестом
     test('should return value async', async () => {
-        expect(await Ajax.echo(arg)).toBe(arg)
+        expect(await async(arg)).toBe(arg)
     })
 
     test('should catch error async', async () => {
-        try { await Ajax.echo() }
+        try { await async() }
         catch (e) { expect(e.message).toBe('error') }
     })
 

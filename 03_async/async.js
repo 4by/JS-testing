@@ -1,12 +1,10 @@
 
-class Ajax {
-    static echo = data =>
-        new Promise(((resolve, reject) =>
-            setTimeout(() => data
-                ? resolve(data)
-                : reject(new Error('error')), 150)
-        ))
+const async = data =>
+    new Promise(((res, rej) =>
+        setTimeout(() => data
+            ? res(data)
+            : rej(new Error('error')), 150)
+    ))
 
-}
 
-module.exports = Ajax
+module.exports = async
